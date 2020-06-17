@@ -1,16 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
   let listElement = document.getElementById("tasks")
-  
+  let form = document.getElementById("create-task-form")
 
-  document.getElementById("create-task-form").addEventListener("submit", function(event) {
+  form.addEventListener("submit", function(event) {
     event.preventDefault()
     let input = document.getElementById("new-task-description")
     
-    var li = document.createElement('li')
+    let li = document.createElement('li')
+    let button = document.createElement('button')
     li.innerText = input.value 
+    button.innerText = "Delete Task"
     listElement.append(li)
-    console.log(li)
+    li.append(button)
+    
+    button.addEventListener('click', function(){
+      li.remove()
+    })
    
-   document.getElementById("create-task-form").reset()
+   form.reset()
   } )
 });
